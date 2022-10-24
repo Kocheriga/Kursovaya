@@ -1,0 +1,149 @@
+.MainWindow{
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100vh;
+    background-image: url("./images/background.jpg");
+    background-size: cover;
+}
+.Header{
+    position: fixed;
+    margin-top: 0; /* Stick it to the top */
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    /* Cosmetics */
+    background-color: #E18D29;
+    z-index: 101;
+}
+
+.HeaderText{
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    margin-top: 10px;
+    margin-left: 50px;
+    text-align: center;
+    word-break: normal;
+    width: 60px;
+}
+.HeaderButtons{
+    display: flex;
+    margin-left: auto;
+    margin-right: 20px;
+    margin-top: 25px;
+}
+.Button{
+    color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    font-size: 16px;
+}
+.Button2{
+    color: white;
+    background-color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    margin-left: 30px;
+    font-size: 16px;
+}
+
+.Logo{
+    margin-left: 20px;
+    mix-blend-mode: multiply;
+}
+
+
+
+.MainWindowContent{
+    z-index: 100;
+    position: fixed;
+    margin-top: 10vh; /* Stick it to the top */
+    height: 300px;
+    width: 100vw;
+    display: inline-block;
+    background-color: #FFAA00;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.MainImg{
+
+    width: 250px;
+    height: 250px;
+    margin-left: 500px;
+    margin-top:1vw;
+    display: block;
+}
+
+.MainWinText{
+    display: block;
+    justify-content: center;
+    word-break: normal;
+    width: 420px;
+    margin-left: 800px;
+    text-align: center;
+    font-size: 23px;
+    margin-top:-8.5vw;
+    color: #86520a;
+
+}
+
+
+
+.Footer{
+    justify-content: center;
+    position: fixed;
+    bottom: 0; /* Stick it to the top */
+    height: 200px;
+    width: 100vw;
+    display: grid;
+    /* Cosmetics */
+    background-color: #FFAA00;
+}
+.FooterImg{
+    margin-top: 40px;
+    margin-right: 200px;
+    margin-left: 100px;
+    display: flex;
+    width: 120px;
+    height: 120px;
+}
+.FooterContent{
+    display: flex;
+}
+.FooterText{
+    color: white;
+    text-align: center;
+    margin-right: 200px;
+}
+.FooterShare{
+    display: flex;
+    color: white;
+    margin-top: 20px;
+
+}
+.FooterShareImg{
+    margin-top: 30px;
+    display: flex;
+  margin-left: -100px;
+}
+.FooterImg1{
+    width: 40px;
+    height: 40px;
+}
+.FooterImg2{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
