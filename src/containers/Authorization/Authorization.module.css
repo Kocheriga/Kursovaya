@@ -48,10 +48,23 @@
     background-color: #FFE6C9;
     position: fixed;
 }
+.sigIn{
+    color: white;
+    background-color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    font-size: 16px;
+    width: 300px;
+    margin-top: 10px;
+}
 .authImg{
     height: 250px;
     width: 230px;
     align-content: center;
+    margin-top: 20px;
 }
 .mobileImg{
     width: 300px;
@@ -60,16 +73,37 @@
     margin-top: 10px;
     margin-left: 380px;
 }
+
 .form{
     width: 600px;
     margin-right: 0;
     justify-content: center;
     display: inline-block;
+    align-content: center;
+    height: 500px;
+    text-align: center;
 }
 .Text{
     color: #86520a;
     font-size: 20px;
+    margin-top: 10px;
 }
 .Link{
     color: #FF5E00;
+}
+.Inputs{
+    align-content: center;
+    text-align: center;
+    margin-top: 100px;
+    height: 150px;
+    display: inline-block;
+}
+.textBox{
+    width: 300px;
+    height: 35px;
+    font-size: 20px;
+    border-radius: 5px;
+    border-color: white;
+    color: #86520a;
+    margin-bottom: 10px;
 }

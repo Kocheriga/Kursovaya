@@ -18,9 +18,14 @@ class Authorization extends Component {
                     <div className={classes.Container}>
                         <div className={classes.form}>
                             <img className={classes.authImg} src={auth} alt={"Картинка"} />
-                            <Link to={"/"}><button className={classes.Button2}>На главную страницу</button></Link>
+                            <div className={classes.Inputs}>
+                                <input className={classes.textBox} type={'text'} placeholder={"Почта"}/>
+                                <input className={classes.textBox} type={'password'}  placeholder={"Пароль"}/>
+                                <br/>
+                                <Link to={"/profile"}><button className={classes.sigIn}>Войти</button></Link>
+                            </div>
                             <div className={classes.Text}>
-                                У вас нет аккаунта? <Link to={"/chooseRegistration"} className={classes.Link}>Зарегистрируйтесь</Link>
+                                У вас нет аккаунта? <Link to={"/auth"} className={classes.Link}>Зарегистрируйтесь</Link>
                             </div>
                         </div>
                         <img className={classes.mobileImg} src={mobile} alt={"Картинка"} />
