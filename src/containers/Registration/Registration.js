@@ -11,7 +11,10 @@ class Registration extends Component {
     render() {
         return (
             <div className={classes.Window}>
-                <Header/>
+                <Header>
+                    <Link to={"/auth"}> <button className={classes.Button}>Войти</button></Link>
+                    <Link to={"/"}><button className={classes.Button2}>На главную страницу</button></Link>
+                </Header>
                 <div className={classes.Content}>
                     <div className={classes.Container}>
                         <div className={classes.Inputs}>

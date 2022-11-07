@@ -7,6 +7,31 @@
     background-image: url("../MainWindow/images/background.jpg");
     background-size: cover;
 }
+.Button{
+    color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    font-size: 16px;
+    margin-right: 30px;
+    float: right;
+    margin-top: 30px;
+}
+.Button2{
+    color: white;
+    background-color: #FF5E00;
+    border-radius: 45px;
+    height: 40px;
+    padding: 0 20px 0 20px;
+    text-align: center;
+    border-color: #FF5E00;
+    margin-right: 30px;
+    font-size: 16px;
+    float: right;
+    margin-top: 30px;
+}
 .Content{
     width: 1920px;
     height: 670px;
