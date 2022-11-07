@@ -25,7 +25,7 @@ class Authorization extends Component {
                                 <Link to={"/profile"}><button className={classes.sigIn}>Войти</button></Link>
                             </div>
                             <div className={classes.Text}>
-                                У вас нет аккаунта? <Link to={"/auth"} className={classes.Link}>Зарегистрируйтесь</Link>
+                                У вас нет аккаунта? <Link to={"/chooseRegistration"} className={classes.Link}>Зарегистрируйтесь</Link>
                             </div>
                         </div>
                         <img className={classes.mobileImg} src={mobile} alt={"Картинка"} />
