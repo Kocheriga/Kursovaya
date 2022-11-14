@@ -60,6 +60,9 @@
     width: 300px;
     margin-top: 10px;
 }
+.error{
+    border-color: red;
+}
 .authImg{
     height: 250px;
     width: 230px;
@@ -107,3 +110,4 @@
     color: #86520a;
     margin-bottom: 10px;
 }
+

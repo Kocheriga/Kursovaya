@@ -3,6 +3,7 @@ import Authorization from "./containers/Authorization/Authorization";
 import Registration from "./containers/Registration/Registration";
 import MainWindow from "./containers/MainWindow/MainWindow";
 import ChooseRegistration from "./containers/ChooseRegistration/ChooseRegistration";
+import Profile from "./containers/Profile/Profile"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
             <Route path='/registration' element={<Registration/>}/>
             <Route path='/' element={<MainWindow/>}/>
             <Route path='/chooseRegistration' element={<ChooseRegistration/>}/>
+            <Route path={'/profile'} element={<Profile/>}/>
         </Routes>
     </>
   );

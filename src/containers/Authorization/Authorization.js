@@ -6,7 +6,44 @@ import {Link} from "react-router-dom";
 import auth from "../../images/auth.png";
 import mobile from "../../images/mobile.png"
 
+
 class Authorization extends Component {
+    state= {
+        isAuthValid:false,
+        users:[
+            {
+                id:1,
+                login:'Kocheriga',
+                password:'123456'
+            }
+        ],
+    }
+
+
+
+
+    onChangeHandler=()=>{
+        let input = document.getElementsByName('login');
+        let password = document.getElementsByName('password');
+        let isAuthValid =true
+        if(input.length>=6 && password.length>=6)
+        {
+            this.setState({isAuthValid})
+        }
+    }
+    signIn=()=>{
+        let input = document.getElementsByName('login')[0].value;
+        let password = document.valueOf().getElementsByName('password')[0].value;
+        if(input === this.state.users[0].login && password === this.state.users[0].password)
+        {
+            document.location.replace('/profile');
+        }
+        else{
+            alert("Неверный логин или пароль");
+        }
+    }
+
+
     render() {
         return (
             <div className={classes.Window}>
@@ -19,10 +56,10 @@ class Authorization extends Component {
                         <div className={classes.form}>
                             <img className={classes.authImg} src={auth} alt={"Картинка"} />
                             <div className={classes.Inputs}>
-                                <input className={classes.textBox} type={'text'} placeholder={"Почта"}/>
-                                <input className={classes.textBox} type={'password'}  placeholder={"Пароль"}/>
+                                <input name={'login'} onChange={this.onChangeHandler} className={classes.textBox} type={'text'} placeholder={"Логин"}/>
+                                <input name={'password'} onChange={this.onChangeHandler} className={classes.textBox} type={'password'}  placeholder={"Пароль"}/>
                                 <br/>
-                                <Link to={"/profile"}><button className={classes.sigIn}>Войти</button></Link>
+                                <button onClick={this.signIn} name={'signbutton'} className={classes.sigIn}>Войти</button>
                             </div>
                             <div className={classes.Text}>
                                 У вас нет аккаунта? <Link to={"/chooseRegistration"} className={classes.Link}>Зарегистрируйтесь</Link>
