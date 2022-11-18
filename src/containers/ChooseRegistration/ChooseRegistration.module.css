@@ -32,6 +32,14 @@
     float: right;
     margin-top: 30px;
 }
+.Contentbg{
+    width: 100%;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
 .Content{
     width: 1920px;
     height: 670px;

@@ -13,6 +13,7 @@ class MainWindow extends Component {
                     <Link to={"/chooseRegistration"}><button className={classes.Button2}>Зарегистрироваться</button></Link>
                     <Link to={"/auth"}> <button className={classes.Button}>Войти</button></Link>
                 </Header>
+                <div className={classes.Contentbg}>
                 <div className={classes.MainWindowContent}>
                     <div className={classes.content}>
                         <img src={MainImg} className={classes.MainImg} alt={"Картинка"}/>
@@ -20,7 +21,7 @@ class MainWindow extends Component {
                             Добро пожаловать в веб-приложение для поиска временного дома для вашего питомца
                         </div>
                     </div>
-                </div>
+                </div></div>
                 <Footer/>
             </div>
         );

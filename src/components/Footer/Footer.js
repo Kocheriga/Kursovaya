@@ -4,8 +4,9 @@ import Logo from "../../containers/MainWindow/images/FooterImg.png"
 import vk from "../../containers/MainWindow/images/vk.png"
 import telega from "../../containers/MainWindow/images/telega.png"
 
-const Footer=(props)=>{
+const Footer=()=>{
     return(
+        <div className={classes.footerbg}>
         <div className={classes.footer}>
             <div className={classes.content}>
                 <img className={classes.footerImg} src={Logo} alt={"Лого подвала"}></img>
@@ -25,7 +26,7 @@ const Footer=(props)=>{
                     <img className={classes.imag} src={telega} alt={"телега"}></img>
                 </div>
             </div>
-        </div>
+        </div></div>
     )
 
 }

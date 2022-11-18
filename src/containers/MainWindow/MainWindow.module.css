@@ -7,6 +7,15 @@
     background-image: url("./images/background.jpg");
     background-size: cover;
 }
+.Contentbg{
+    width: 100%;
+    height: 300px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #FFAA00;
+}
 .MainWindowContent{
     z-index: 100;
     position: fixed;

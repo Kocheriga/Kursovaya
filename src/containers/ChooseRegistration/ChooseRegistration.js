@@ -13,6 +13,7 @@ class ChooseRegistration extends PureComponent {
                     <Link to={"/auth"}> <button className={classes.Button}>Войти</button></Link>
                     <Link to={"/"}><button className={classes.Button2}>На главную страницу</button></Link>
                 </Header>
+                <div className={classes.Contentbg}>
                 <div className={classes.Content}>
                     <div className={classes.Container}>
                         <img className={classes.Logo} src={reg} alt={"logo"}></img>
@@ -22,7 +23,7 @@ class ChooseRegistration extends PureComponent {
                             <Link  to={"/registration"}><button style={{width: 300, height:60, fontSize:30}} className={classes.Button2}>Компания</button></Link>
                         </div>
                     </div>
-                </div>
+                </div></div>
                 <Footer/>
             </div>
         );
