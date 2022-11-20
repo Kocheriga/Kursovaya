@@ -46,10 +46,10 @@ class Authorization extends Component {
             {
                 elem1.className = classes.red;
                 error1.className = classes.errorMessage;
-             }
+            }
             else {
                 elem1.className = classes.textBox;
-                error1.className = classes.unerrorMessage;
+                error1.className = classes.unErrorMessage;
             }
             if(password !== this.state.users[0].password) {
                 elem2.className = classes.red;
@@ -57,27 +57,28 @@ class Authorization extends Component {
             }
             else{
                 elem2.className = classes.textBox;
-                error2.className = classes.unerrorMessage;
+                error2.className = classes.unErrorMessage;
             }
         }
     }
     passwordCheck=()=>{
         const elem = document.querySelector('#pass_img');
         const input = document.querySelector('#log2');
-       if(check ===false){
-           elem.className = classes.passwordUnImg;
-           check =true;
-           input.type ='text';
-       }
-       else if(check ===true){
-           elem.className = classes.passwordImg;
+        if(check ===false){
+            elem.className = classes.passwordUnImg;
+            check =true;
+            input.type ='text';
+        }
+        else if(check ===true){
+            elem.className = classes.passwordImg;
             check = false;
-           input.type ='password';
-       }
+            input.type ='password';
+        }
     }
     check=()=>{
         console.log(1);
     }
+
 
     render() {
         return (
@@ -86,27 +87,27 @@ class Authorization extends Component {
                     <Link to={"/chooseRegistration"}> <button className={classes.Button}>Зарегистрироваться</button></Link>
                     <Link to={"/"}><button className={classes.Button2}>На главную страницу</button></Link>
                 </Header>
-                <div className={classes.Contentbg}>
-                <div className={classes.Content}>
-                    <div className={classes.Container}>
-                        <div className={classes.form}>
-                            <img className={classes.authImg} src={auth} alt={"Картинка"} />
-                            <div className={classes.Inputs}>
-                                <input id={'log1'} name={'login'} onChange={this.onChangeHandler} className={classes.textBox} type={'text'} placeholder={"Логин"}/>
-                                <div id={'text1'} className={classes.unerrorMessage}>Введен неверный логин</div>
-                                <input id={'log2'} name={'password'} onChange={this.onChangeHandler} className={classes.textBox} type={'password'}  placeholder={"Пароль"} maxLength={20}/>
-                                <button id={'pass_img'} className={classes.passwordImg} onClick={this.passwordCheck}/>
-                                <div id={'text2'} className={classes.unerrorMessage}>Введен неверный пароль</div>
-                                <br/>
-                                <button onClick={this.signIn} name={'signbutton'} className={classes.sigIn}>Войти</button>
+                <div className={classes.ContentBg}>
+                    <div className={classes.Content}>
+                        <div className={classes.Container}>
+                            <div className={classes.form}>
+                                <img className={classes.authImg} src={auth} alt={"Картинка"} />
+                                <div className={classes.Inputs}>
+                                    <input id={'log1'} name={'login'} onChange={this.onChangeHandler} className={classes.textBox} type={'text'} placeholder={"Логин"}/>
+                                    <div id={'text1'} className={classes.unErrorMessage}>Введен неверный логин</div>
+                                    <input id={'log2'} name={'password'} onChange={this.onChangeHandler} className={classes.textBox} type={'password'}  placeholder={"Пароль"} maxLength={20}/>
+                                    <button id={'pass_img'} className={classes.passwordImg} onClick={this.passwordCheck}/>
+                                    <div id={'text2'} className={classes.unErrorMessage}>Введен неверный пароль</div>
+                                    <br/>
+                                    <button onClick={this.signIn} name={'signbutton'} className={classes.sigIn}>Войти</button>
+                                </div>
+                                <div className={classes.Text}>
+                                    У вас нет аккаунта? <Link to={"/chooseRegistration"} className={classes.Link}>Зарегистрируйтесь</Link>
+                                </div>
                             </div>
-                            <div className={classes.Text}>
-                                У вас нет аккаунта? <Link to={"/chooseRegistration"} className={classes.Link}>Зарегистрируйтесь</Link>
-                            </div>
+                            <img className={classes.mobileImg} src={mobile} alt={"Картинка"} />
                         </div>
-                        <img className={classes.mobileImg} src={mobile} alt={"Картинка"} />
-                    </div>
-                </div></div>
+                    </div></div>
                 <Footer/>
             </div>
         );
