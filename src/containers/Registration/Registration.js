@@ -5,6 +5,7 @@ import reg from '../../images/regComp.svg';
 import classes from "./Registration.module.css"
 import {Link} from "react-router-dom";
 import lock from "../../images/lock.png";
+import axios from "axios";
 
 
 let check =false;
@@ -153,6 +154,20 @@ function Registration(){
         }
     }
 
+    const createAccount= async (e) => {
+        console.log(INN, UserName, Email, Password)
+        const res = await axios.post('https://localhost:5001/api/authentication/registrationUser', {
+            INN,
+            UserName,
+            Email,
+            Password,
+            "roles": [
+                "Company"
+            ]
+        })
+        console.log(res)
+    }
+
     return (
         <div className={classes.Window}>
             <Header>
@@ -195,7 +210,7 @@ function Registration(){
                                  <button id={'pass2_img'} className={classes.passwordImg} onClick={passwordCheck}/>
                             </div>
 
-                            <Link to={"/profile"}><button disabled={!formValid} className={classes.sigIn}>Войти</button></Link>
+                            <Link to={"/"}><button onClick={e => createAccount(e)} disabled={!formValid} className={classes.sigIn}>Войти</button></Link>
                             <div className={classes.Text}>
                                 У вас уже есть аккаунт? <Link to={"/auth"} className={classes.Link}>Войти</Link>
                             </div>

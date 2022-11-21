@@ -5,20 +5,11 @@ import Header from "../../components/Header/Header";
 import {Link} from "react-router-dom";
 import auth from "../../images/auth.png";
 import mobile from "../../images/mobile.png";
+import axios from "axios";
 
 
 let check =false;
 class Authorization extends Component {
-    state= {
-        isAuthValid:false,
-        users:[
-            {
-                id:1,
-                login:'Kocheriga',
-                password:'123456'
-            }
-        ],
-    }
 
     onChangeHandler=()=>{
         let input = document.getElementsByName('login');
@@ -29,38 +20,33 @@ class Authorization extends Component {
             this.setState({isAuthValid})
         }
     }
-    signIn=()=>{
+    signIn=async (e)=>{
+
         const elem1 = document.querySelector('#log1');
         const elem2 = document.querySelector('#log2');
         const error1 = document.querySelector('#text1');
         const error2 = document.querySelector('#text2');
+        const email = document.querySelector('#log1').value;
+        const password = document.querySelector('#log2').value;
 
-        let input = document.getElementsByName('login')[0].value;
-        let password = document.valueOf().getElementsByName('password')[0].value;
-        if(input === this.state.users[0].login && password === this.state.users[0].password)
-        {
-            document.location.replace('/profile');
+        try{
+            console.log(email, password)
+            const res = await axios.post('https://localhost:5001/api/authentication/login/', {
+                email: email,
+                password: password
+            })
+            console.log(res)
+            // console.log(res.data)
+            localStorage.setItem('token:', res.data.token)
         }
-        else{
-            if(input !== this.state.users[0].login)
-            {
-                elem1.className = classes.red;
-                error1.className = classes.errorMessage;
-            }
-            else {
-                elem1.className = classes.textBox;
-                error1.className = classes.unErrorMessage;
-            }
-            if(password !== this.state.users[0].password) {
-                elem2.className = classes.red;
-                error2.className = classes.errorMessage;
-            }
-            else{
-                elem2.className = classes.textBox;
-                error2.className = classes.unErrorMessage;
-            }
+        catch {
+            elem1.className = classes.red;
+            error1.className = classes.errorMessage;
+            elem2.className = classes.red;
+            error2.className = classes.errorMessage;
         }
     }
+
     passwordCheck=()=>{
         const elem = document.querySelector('#pass_img');
         const input = document.querySelector('#log2');
