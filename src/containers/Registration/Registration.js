@@ -12,17 +12,20 @@ let check =false;
 function Registration(){
 
     const[INN, setINN]=useState('')
+    const[HotelName, setHotelName]=useState('')
     const[UserName, setUserName]=useState('')
     const[Email, setEmail]=useState('')
     const[Password, setPassword]=useState('')
     const[CopyPassword, setCopyPassword]=useState('')
     const[INNNull, setINNNull]=useState(false)
+    const[HotelNameNull, setHotelNameNull]=useState(false)
     const[UserNameNull, setUserNameNull]=useState(false)
     const[EmailNull, setEmailNull]=useState(false)
     const[PasswordNull, setPasswordNull]=useState(false)
     const[CopyPasswordNull, setCopyPasswordNull]=useState(false)
     const[INNError, setINNError]=useState('ИНН не может быть пустым!')
-    const[UserNameError, setUserNameError]=useState('Название не может быть пустым!')
+    const[HotelNameError, setHotelNameError]=useState('Название не может быть пустым!')
+    const[UserNameError, setUserNameError]=useState('Имя не может быть пустым!')
     const[EmailError, setEmailError]=useState('Почта не может быть пустой!')
     const[PasswordError, setPasswordError]=useState('Пароль не может быть пустым!')
     const[CopyPasswordError, setCopyPasswordError]=useState('Повторение пароля не может быть пустым!')
@@ -49,13 +52,13 @@ function Registration(){
         }
     }
     useEffect(()=>{
-        if(UserNameError || EmailError || INNError || PasswordError || CopyPasswordError){
+        if(UserNameError || HotelNameError || EmailError || INNError || PasswordError || CopyPasswordError){
             setFormValid(false)
         }
         else{
             setFormValid(true)
         }
-    }, [UserNameError, EmailError, INNError, PasswordError, CopyPasswordError]
+    }, [UserNameError, HotelNameError, EmailError, INNError, PasswordError, CopyPasswordError]
     )
 
     const INNHandler = (e) => {
@@ -77,7 +80,7 @@ function Registration(){
         const login = document.querySelector('#Login')
         setUserName(e.target.value)
         if(e.target.value.length < 10 || e.target.value.length >50){
-            setUserNameError('Длина названия отеля - не более 50 знаков')
+            setUserNameError('Длина имени - не более 50 и не менее 10 знаков')
             console.log('Ошибка в Логине')
             login.className = classes.textBoxError;
         }
@@ -85,6 +88,20 @@ function Registration(){
             setUserNameError('')
             console.log('Ошибка в Логине нет')
             login.className = classes.textBox;
+        }
+    }
+    const hotelHandler = (e) => {
+        const hotel = document.querySelector('#Hotel')
+        setHotelName(e.target.value)
+        if(e.target.value.length < 10 || e.target.value.length >50){
+            setHotelNameError('Длина названия отеля - не более 50 и не менее 10 знаков')
+            console.log('Ошибка в Названии')
+            hotel.className = classes.textBoxError;
+        }
+        else{
+            setHotelNameError('')
+            console.log('Ошибка в Названии нет')
+            hotel.className = classes.textBox;
         }
     }
     const emailHandler = (e) => {
@@ -141,6 +158,9 @@ function Registration(){
             case 'login':
                 setUserNameNull(true)
                 break
+            case 'hotel':
+                setHotelNameNull(true)
+                break
             case 'email':
                 setEmailNull(true)
                 break
@@ -155,14 +175,20 @@ function Registration(){
     }
 
     const createAccount= async (e) => {
-        console.log(INN, UserName, Email, Password)
+        const inn = document.querySelector('#INN').value;
+        const login = document.querySelector('#Login').value;
+        const email = document.querySelector('#Email').value;
+        const hotel = document.querySelector('#Hotel').value;
+        const password = document.querySelector('#Password').value;
+        console.log(inn, hotel, email, password, login)
         const res = await axios.post('https://localhost:5001/api/authentication/registrationUser', {
             INN,
-            UserName,
+            HotelName,
             Email,
             Password,
+            UserName,
             "roles": [
-                "Company"
+                "Companyy"
             ]
         })
         console.log(res)
@@ -188,7 +214,12 @@ function Registration(){
 
                             <div className={classes.inputBox}>
                                 {(UserNameNull && UserNameError) && <div className={classes.errorMessage}>{UserNameError}</div>}
-                                <input onChange={e => loginHandler(e)} onBlur={e => blurHandler(e)} value={UserName} id={'Login'} className={classes.textBox} type={'text'} placeholder={'Введите название Вашего отеля'} name={'login'}/>
+                                <input onChange={e => loginHandler(e)} onBlur={e => blurHandler(e)} value={UserName} id={'Login'} className={classes.textBox} type={'text'} placeholder={'Введите Ваше имя'} name={'login'}/>
+                            </div>
+
+                            <div className={classes.inputBox}>
+                                {(HotelNameNull && HotelNameError) && <div className={classes.errorMessage}>{HotelNameError}</div>}
+                                <input onChange={e => hotelHandler(e)} onBlur={e => blurHandler(e)} value={HotelName} id={'Hotel'} className={classes.textBox} type={'text'} placeholder={'Введите название Вашего отеля'} name={'hotel'}/>
                             </div>
 
                             <div className={classes.inputBox}>
@@ -199,14 +230,14 @@ function Registration(){
                             <div className={classes.inputBox}>
                                  {(PasswordNull && PasswordError) && <div className={classes.errorMessage}>{PasswordError}</div>}
                                 <img alt={'Картинка'} src={lock} className={classes.lockImg}/>
-                                <input onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} value={Password} id={'Password'} className={classes.textBox} type={'text'} placeholder={'Введите пароль'} name={'password'}/>
+                                <input onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} value={Password} id={'Password'} className={classes.textBox} type={'password'} placeholder={'Введите пароль'} name={'password'}/>
                                 <button id={'pass1_img'} className={classes.passwordImg} onClick={passwordCheck}/>
                             </div>
 
                             <div className={classes.inputBox}>
                                  {(CopyPasswordNull && CopyPasswordError) && <div className={classes.errorMessage}>{CopyPasswordError}</div>}
                                  <img alt={'Картинка'} src={lock} className={classes.lockImg}/>
-                                 <input onChange={e => passwordCopyHandler(e)} onBlur={e => blurHandler(e)} value={CopyPassword} id={'PasswordCopy'} className={classes.textBox} type={'text'} placeholder={'Повторите пароль'} name={'copyPassword'}/>
+                                 <input onChange={e => passwordCopyHandler(e)} onBlur={e => blurHandler(e)} value={CopyPassword} id={'PasswordCopy'} className={classes.textBox} type={'password'} placeholder={'Повторите пароль'} name={'copyPassword'}/>
                                  <button id={'pass2_img'} className={classes.passwordImg} onClick={passwordCheck}/>
                             </div>
 
