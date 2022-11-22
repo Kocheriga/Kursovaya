@@ -38,6 +38,7 @@ class Authorization extends Component {
             console.log(res)
             // console.log(res.data)
             localStorage.setItem('token:', res.data.token)
+            window.location.href = '/profile';
         }
         catch {
             elem1.className = classes.red;
@@ -93,7 +94,8 @@ class Authorization extends Component {
                             </div>
                             <img className={classes.mobileImg} src={mobile} alt={"Картинка"} />
                         </div>
-                    </div></div>
+                    </div>
+                </div>
                 <Footer/>
             </div>
         );

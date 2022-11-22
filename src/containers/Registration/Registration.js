@@ -8,6 +8,8 @@ import lock from "../../images/lock.png";
 import axios from "axios";
 
 
+
+
 let check =false;
 function Registration(){
 
@@ -122,7 +124,7 @@ function Registration(){
     const passwordHandler=(e)=>{
         const passwordInput = document.querySelector('#Password')
         setPassword(e.target.value)
-        const regex =/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{6,20})/;
+        const regex =/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{10,20})/;
         if(!regex.test(e.target.value))
         {
             setPasswordError('Пароль должен содержать от 8 до 20 символов и содержать по меньшей мере:1 цифру, 1 спец символ, 1 строчную букву')
@@ -181,17 +183,23 @@ function Registration(){
         const hotel = document.querySelector('#Hotel').value;
         const password = document.querySelector('#Password').value;
         console.log(inn, hotel, email, password, login)
-        const res = await axios.post('https://localhost:5001/api/authentication/registrationUser', {
-            INN,
-            HotelName,
-            Email,
-            Password,
-            UserName,
-            "roles": [
-                "Companyy"
-            ]
-        })
-        console.log(res)
+        try{
+            const res = await axios.post('https://localhost:5001/api/authentication/registrationCompanyy', {
+                inn,
+                hotel,
+                email,
+                password,
+                login,
+                "roles": [
+                    "Companyy"
+                ]
+            })
+            console.log(res)
+            window.location.href = '/';
+        }
+        catch {
+            alert("что-то пошло не так")
+        }
     }
 
     return (
@@ -206,42 +214,35 @@ function Registration(){
                         <div className={classes.Inputs}>
                             <img className={classes.RegImg} src={reg} alt={'Картинка'}/>
                             <p className={classes.p}>Регистрация</p>
-
                             <div className={classes.inputBox}>
                                 {(INNNull && INNError) && <div className={classes.errorMessage}>{INNError}</div> }
                                 <input onChange={e => INNHandler(e)} onBlur={e => blurHandler(e)} value={INN} id={'INN'} className={classes.textBox} type={'text'} placeholder={'Введите ИНН Вашего отеля'} name={'inn'}/>
                             </div>
-
                             <div className={classes.inputBox}>
                                 {(UserNameNull && UserNameError) && <div className={classes.errorMessage}>{UserNameError}</div>}
                                 <input onChange={e => loginHandler(e)} onBlur={e => blurHandler(e)} value={UserName} id={'Login'} className={classes.textBox} type={'text'} placeholder={'Введите Ваше имя'} name={'login'}/>
                             </div>
-
                             <div className={classes.inputBox}>
                                 {(HotelNameNull && HotelNameError) && <div className={classes.errorMessage}>{HotelNameError}</div>}
                                 <input onChange={e => hotelHandler(e)} onBlur={e => blurHandler(e)} value={HotelName} id={'Hotel'} className={classes.textBox} type={'text'} placeholder={'Введите название Вашего отеля'} name={'hotel'}/>
                             </div>
-
                             <div className={classes.inputBox}>
                                 {(EmailNull && EmailError) && <div className={classes.errorMessage}>{EmailError}</div>}
                                 <input onChange={e => emailHandler(e)} onBlur={e => blurHandler(e)} value={Email} id={'Email'} className={classes.textBox} type={'text'} placeholder={'Введите Вашу почту'} name={'email'}/>
                             </div>
-
                             <div className={classes.inputBox}>
                                  {(PasswordNull && PasswordError) && <div className={classes.errorMessage}>{PasswordError}</div>}
                                 <img alt={'Картинка'} src={lock} className={classes.lockImg}/>
                                 <input onChange={e => passwordHandler(e)} onBlur={e => blurHandler(e)} value={Password} id={'Password'} className={classes.textBox} type={'password'} placeholder={'Введите пароль'} name={'password'}/>
                                 <button id={'pass1_img'} className={classes.passwordImg} onClick={passwordCheck}/>
                             </div>
-
                             <div className={classes.inputBox}>
                                  {(CopyPasswordNull && CopyPasswordError) && <div className={classes.errorMessage}>{CopyPasswordError}</div>}
                                  <img alt={'Картинка'} src={lock} className={classes.lockImg}/>
                                  <input onChange={e => passwordCopyHandler(e)} onBlur={e => blurHandler(e)} value={CopyPassword} id={'PasswordCopy'} className={classes.textBox} type={'password'} placeholder={'Повторите пароль'} name={'copyPassword'}/>
                                  <button id={'pass2_img'} className={classes.passwordImg} onClick={passwordCheck}/>
                             </div>
-
-                            <Link to={"/"}><button onClick={e => createAccount(e)} disabled={!formValid} className={classes.sigIn}>Войти</button></Link>
+                            <button onClick={e => createAccount(e)} disabled={!formValid} className={classes.sigIn}>Войти</button>
                             <div className={classes.Text}>
                                 У вас уже есть аккаунт? <Link to={"/auth"} className={classes.Link}>Войти</Link>
                             </div>
