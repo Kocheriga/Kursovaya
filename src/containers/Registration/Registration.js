@@ -202,6 +202,7 @@ function Registration(){
         }
     }
 
+
     return (
         <div className={classes.Window}>
             <Header>
