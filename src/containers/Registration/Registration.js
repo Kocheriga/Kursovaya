@@ -7,9 +7,6 @@ import {Link} from "react-router-dom";
 import lock from "../../images/lock.png";
 import axios from "axios";
 
-
-
-
 let check =false;
 function Registration(){
 
@@ -185,11 +182,11 @@ function Registration(){
         console.log(inn, hotel, email, password, login)
         try{
             const res = await axios.post('https://localhost:5001/api/authentication/registrationCompanyy', {
-                inn,
-                hotel,
-                email,
-                password,
-                login,
+                INN,
+                HotelName,
+                Email,
+                Password,
+                UserName,
                 "roles": [
                     "Companyy"
                 ]

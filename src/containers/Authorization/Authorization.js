@@ -38,7 +38,7 @@ class Authorization extends Component {
             console.log(res)
             // console.log(res.data)
             localStorage.setItem('token:', res.data.token)
-            window.location.href = '/profile';
+            window.location.href = '/posts';
         }
         catch {
             elem1.className = classes.red;
